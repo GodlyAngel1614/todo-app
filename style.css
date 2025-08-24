@@ -1,0 +1,194 @@
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+.container {
+    background: #fff;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+#addBtn {
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+
+    width: 100%; /* make li take full width of parent */
+    word-wrap: break-word; /* legacy, but still works */
+    overflow-wrap: anywhere; /* modern: breaks words at any point */
+    white-space: normal; /* ensure text wraps to next line */
+    text-align: center; /* optional: keeps it centered */
+}
+
+div.resource {
+    background: #fff;
+    padding: 3rem;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 10%;
+    max-width: 400px;
+}
+
+li.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+button.removeBtn {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+input {
+    overflow-wrap: break-word;
+    width: 80%;
+    padding: 3px 5px;
+    margin: 10px 0;
+    border: 2px sollid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: "Arial", sans-serif;
+    outline: none;
+    transition: 0.2s all ease;
+    text-align: center;
+}
+
+input.set {
+    border: transparent;
+}
+
+input.set:focus {
+    border-bottom: #D6336C;
+    box-shadow: 0 0 5px rgba(214, 51, 108, 0.5);
+}
+
+
+
+
+
+/* Modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    animation: popIn 0.3s ease-out;
+}
+
+.modal-content h1 {
+    color: #D6336C;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.modal-content input {
+    width: 80%;
+    padding: 10px 12px;
+    margin: 10px 0;
+    border: 2px sollid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: "Arial", sans-serif;
+    outline: none;
+    transition: 0.2s all ease;
+}
+
+.modal-content h2 {
+    color: #728cd8;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content button {
+    padding: 8px 20px;
+    border-radius: 8px;
+    background: #D6336C;
+    color: white;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    transition: 0.2s all ease;
+}
+
+.modal-content p {
+    color: #FBBF24; 
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content button:hover {
+    background-color: #B02A5E;
+    transform: translateY(-2px);
+}
+
+.modal-content input:focus {
+    border-bottom: #D6336C;
+    box-shadow: 0 0 5px rgba(214, 51, 108, 0.5);
+}
+
+@keyframes popIn {
+    0% {transform: scale(.8); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+}
