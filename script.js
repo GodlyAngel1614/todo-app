@@ -7,6 +7,10 @@ const taskList = document.getElementById("taskList");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 renderTasks();
 
+// load settings -TODO 
+
+let settings = JSON.parse(localStorage.getItem("settings")) || [];
+
 // add tasks
 addBtn.addEventListener("click", () => {
   const taskText = taskInput.value.trim();
@@ -36,7 +40,7 @@ taskList.addEventListener("click", (e) => {
   renderTasks();
 });
 
-// toggle the popup menu. maybe in the future i could use this but for now i don't need the modal.
+// toggle the popup menu. maybe in the future i could use this but for now i don't need the modal. 
 function popup() {
   const modal = document.createElement("div");
   modal.className = "modal";
@@ -75,17 +79,21 @@ function isDateValid(dateStr) {
   return !isNaN(new Date(dateStr));
 }
 
-function renderTasks() {
-  taskList.innerHTML = "";
+function renderSettings() { // might use the same stylesheet from the popup modal for the settings interface.
 
-  tasks.forEach((task, i) => {
-    const li = document.createElement("li");
-    li.dataset.index = i;
-    li.textContent = task.text;
+}
+
+function renderTasks() { // this function loads and sets the to-do inputs from the client using the local storage native to visual studio code.
+  taskList.innerHTML = "";
+ 
+  tasks.forEach((task, i) => { // tasks is an array [] it is searching this array and takes two args i = index task = nameOfTask
+    const li = document.createElement("li"); // "li" is a list element
+    li.dataset.index = i; // set the index from the dataset... 
+    li.textContent = task.text; // Whatever the player inputted from the input box.
 
     if (task.completed) li.classList.add("completed");
 
-    const resourceDiv = document.createElement("div");
+    const resourceDiv = document.createElement("div"); // the resource div is where all the "elements" live. 
     resourceDiv.classList.add("resource");
 
     const input = document.createElement("input");
