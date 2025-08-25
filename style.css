@@ -47,10 +47,10 @@ ul {
 li {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: left;
+  align-content: left;
+  align-items: left;
+
   gap: 5px;
   padding: 2rem;
   border-bottom: 1px solid #eee;
@@ -59,7 +59,7 @@ li {
   word-wrap: break-word; /* legacy, but still works */
   overflow-wrap: anywhere; /* modern: breaks words at any point */
   white-space: normal; /* ensure text wraps to next line */
-  text-align: center; /* keeps it centered */
+  text-align: left;
 }
 
 button {
@@ -76,12 +76,13 @@ div.resource {
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 4%;
+  width: 2%;
   max-width: 400px;
   margin-left: 21rem;
-  text-align: center;
   align-content: center;
   margin-top: 5px;
+
+    text-align: center;
 }
 
 li.completed {
@@ -112,6 +113,7 @@ input {
 
 input.set {
   border: transparent;
+  box-shadow: 0 2px 10px rgba(9, 255, 50, 0.1);
 }
 
 input.set:focus {
