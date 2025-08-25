@@ -70,15 +70,17 @@ button {
 
 div.resource {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: absolute;
   background: #fff;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 2%;
+  width: 4%;
   max-width: 400px;
-  margin-left: 20rem;
+  margin-left: 21rem;
+  text-align: center;
+  align-content: center;
   margin-top: 5px;
 }
 

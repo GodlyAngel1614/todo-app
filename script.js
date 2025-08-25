@@ -3,19 +3,27 @@ const taskInput = document.getElementById("taskInput");
 const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
 
-// load tasks from the local storage
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let priority = [ // Set acceptable flags
+  {id: 1, emoji: "⭕"},
+  {id: 2, emoji: "🟨"},
+  {id: 3, emoji: "🟩"}
+]
+
+let tasks = JSON.parse(localStorage.getItem("tasks")) || []; // load tasks from the local storage
 renderTasks();
 
 // load settings -TODO 
 
 let settings = JSON.parse(localStorage.getItem("settings")) || [];
 
+
+
+
 // add tasks
 addBtn.addEventListener("click", () => {
   const taskText = taskInput.value.trim();
   if (taskText) {
-    tasks.push({ text: taskText, completed: false, dateInputted: false });
+    tasks.push({ text: taskText, completed: false, dateInputted: false, _p: 0});
     saveTasks();
     renderTasks();
     //popup();
@@ -34,6 +42,8 @@ taskList.addEventListener("click", (e) => {
     tasks[index].completed = !tasks[index].completed;
   } else if (e.target.tagName === "set") {
      tasks[index].dateInputted = !tasks[index].dateInputted;
+  } else if (e.target.tagName === "priority") {
+      tasks[index].priority = !tasks[index].priority;
   }
 
   saveTasks();
@@ -91,6 +101,16 @@ function renderTasks() { // this function loads and sets the to-do inputs from t
     li.dataset.index = i; // set the index from the dataset... 
     li.textContent = task.text; // Whatever the player inputted from the input box.
 
+    const flag = document.createElement("button")
+
+
+    priority.map((emoji, i) => {
+      if (task._p == i) {
+        flag.textContent = emoji.emoji
+        return
+      }
+    })
+
     if (task.completed) li.classList.add("completed");
 
     const resourceDiv = document.createElement("div"); // the resource div is where all the "elements" live. 
@@ -101,6 +121,8 @@ function renderTasks() { // this function loads and sets the to-do inputs from t
     input.placeholder = "0/0/0000";
     input.type = "text";
 
+    
+    
     if (task.dateInputted) {
       input.value = task.dateInputted;
       input.classList.add("set");
@@ -131,8 +153,10 @@ function renderTasks() { // this function loads and sets the to-do inputs from t
     removeBtn.textContent = "X";
     removeBtn.classList.add("removeBtn");
 
-    resourceDiv.appendChild(removeBtn);
 
+    resourceDiv.appendChild(removeBtn);
+    resourceDiv.appendChild(flag)
+    
     li.appendChild(input);
     taskList.appendChild(resourceDiv);
     taskList.appendChild(li);
