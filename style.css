@@ -1,194 +1,199 @@
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
 }
 
-
 .container {
-    background: #fff;
-    padding: 2rem;
-    margin-top: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 400px;
+  background: #fff;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .input-group {
-    display: flex;
-    margin-bottom: 1rem;
+  display: flex;
+  margin-bottom: 1rem;
 }
 
 #taskInput {
-    flex: 1;
-    padding: 0.5rem;
-    font-size: 1rem;
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
 #addBtn {
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  padding: 2rem;
+  border-bottom: 1px solid #eee;
 
-    padding: 0.5rem;
-    border-bottom: 1px solid #eee;
-
-    width: 100%; /* make li take full width of parent */
-    word-wrap: break-word; /* legacy, but still works */
-    overflow-wrap: anywhere; /* modern: breaks words at any point */
-    white-space: normal; /* ensure text wraps to next line */
-    text-align: center; /* optional: keeps it centered */
+  width: 100%; /* make li take full width of parent */
+  word-wrap: break-word; /* legacy, but still works */
+  overflow-wrap: anywhere; /* modern: breaks words at any point */
+  white-space: normal; /* ensure text wraps to next line */
+  text-align: center; /* keeps it centered */
 }
 
 div.resource {
-    background: #fff;
-    padding: 3rem;
-    margin-top: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    width: 10%;
-    max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 2%;
+  max-width: 400px;
+  margin-left: 20rem;
+  margin-top: 5px;
 }
 
 li.completed {
-    text-decoration: line-through;
-    color: #888;
+  text-decoration: line-through;
+  color: #888;
 }
 
 button.removeBtn {
-    background: none;
-    border: none;
-    color: red;
-    cursor: pointer;
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
 }
 
 input {
-    overflow-wrap: break-word;
-    width: 80%;
-    padding: 3px 5px;
-    margin: 10px 0;
-    border: 2px sollid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: "Arial", sans-serif;
-    outline: none;
-    transition: 0.2s all ease;
-    text-align: center;
+  overflow-wrap: break-word;
+  width: 80%;
+  padding: 3px 5px;
+  margin: 10px 0;
+  border: 2px sollid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Arial", sans-serif;
+  outline: none;
+  transition: 0.2s all ease;
+  text-align: center;
 }
 
 input.set {
-    border: transparent;
+  border: transparent;
 }
 
 input.set:focus {
-    border-bottom: #D6336C;
-    box-shadow: 0 0 5px rgba(214, 51, 108, 0.5);
+  border-bottom: #d6336c;
+  box-shadow: 0 0 5px rgba(214, 51, 108, 0.5);
 }
-
-
-
-
 
 /* Modal */
 
 .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
-    backdrop-filter: blur(2px);
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  backdrop-filter: blur(2px);
 }
 
 .modal-content {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 12px;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    animation: popIn 0.3s ease-out;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  animation: popIn 0.3s ease-out;
 }
 
 .modal-content h1 {
-    color: #D6336C;
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
+  color: #d6336c;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .modal-content input {
-    width: 80%;
-    padding: 10px 12px;
-    margin: 10px 0;
-    border: 2px sollid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: "Arial", sans-serif;
-    outline: none;
-    transition: 0.2s all ease;
+  width: 80%;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border: 2px sollid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Arial", sans-serif;
+  outline: none;
+  transition: 0.2s all ease;
 }
 
 .modal-content h2 {
-    color: #728cd8;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+  color: #728cd8;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .modal-content button {
-    padding: 8px 20px;
-    border-radius: 8px;
-    background: #D6336C;
-    color: white;
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-    transition: 0.2s all ease;
+  padding: 8px 20px;
+  border-radius: 8px;
+  background: #d6336c;
+  color: white;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  transition: 0.2s all ease;
 }
 
 .modal-content p {
-    color: #FBBF24; 
-    font-size: 1rem;
-    margin-bottom: 1rem;
+  color: #fbbf24;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .modal-content button:hover {
-    background-color: #B02A5E;
-    transform: translateY(-2px);
+  background-color: #b02a5e;
+  transform: translateY(-2px);
 }
 
 .modal-content input:focus {
-    border-bottom: #D6336C;
-    box-shadow: 0 0 5px rgba(214, 51, 108, 0.5);
+  border-bottom: #d6336c;
+  box-shadow: 0 0 5px rgba(214, 51, 108, 0.5);
 }
 
 @keyframes popIn {
-    0% {transform: scale(.8); opacity: 0;}
-    100% {transform: scale(1); opacity: 1;}
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

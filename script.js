@@ -11,7 +11,7 @@ renderTasks();
 addBtn.addEventListener("click", () => {
   const taskText = taskInput.value.trim();
   if (taskText) {
-    tasks.push({ text: taskText, completed: false });
+    tasks.push({ text: taskText, completed: false, dateInputted: false });
     saveTasks();
     renderTasks();
     //popup();
@@ -24,17 +24,19 @@ addBtn.addEventListener("click", () => {
 // Toggle complete and remove task
 taskList.addEventListener("click", (e) => {
   const index = e.target.parentElement.dataset.index;
-  if (e.target.classList.contains("removeBtn")) {
+  if (e.target.classList.contains("removeBtn") || e.target.classList.contains("input")) {
     tasks.splice(index, 1);
   } else if (e.target.tagName === "LI") {
     tasks[index].completed = !tasks[index].completed;
+  } else if (e.target.tagName === "set") {
+     tasks[index].dateInputted = !tasks[index].dateInputted;
   }
 
   saveTasks();
   renderTasks();
 });
 
-// toggle the popup menu.
+// toggle the popup menu. maybe in the future i could use this but for now i don't need the modal.
 function popup() {
   const modal = document.createElement("div");
   modal.className = "modal";
@@ -75,60 +77,58 @@ function isDateValid(dateStr) {
 
 function renderTasks() {
   taskList.innerHTML = "";
-  var li = null;
-  var resourceDiv = null;
 
   tasks.forEach((task, i) => {
-    resourceDiv = document.createElement("div");
-    resourceDiv.classList.add("resource")
-
-    li = document.createElement("li");
-    li.textContent = task.text;
+    const li = document.createElement("li");
     li.dataset.index = i;
+    li.textContent = task.text;
 
     if (task.completed) li.classList.add("completed");
 
-    taskList.appendChild(resourceDiv);
-    taskList.appendChild(li);
-  });
+    const resourceDiv = document.createElement("div");
+    resourceDiv.classList.add("resource");
 
-  if (li) {
-    input = document.createElement("input");
+    const input = document.createElement("input");
     input.classList.add("input");
     input.placeholder = "0/0/0000";
     input.type = "text";
 
-    li.appendChild(input);
+    if (task.dateInputted) {
+      input.value = task.dateInputted;
+      input.classList.add("set");
+    }
 
-    input.addEventListener("click", (e) => {
-      e.stopPropagation();
-    });
-
-    input.addEventListener("focus", () => {
-      console.log("The player attempted to input!");
-    });
-
+    input.addEventListener("click", (e) => e.stopPropagation());
+    
     input.addEventListener("focusout", () => {
       let dateInput = input.value;
       let dateObj = new Date(dateInput);
-
       let currentDate = new Date();
 
-      if (currentDate > dateObj) {
-        console.log("the current date is greater than the date you inputted");
-        input.value = input.placeholder;
+      if (dateInput === "" || isNaN(dateObj.getTime()) || currentDate > dateObj) {
+        console.log("Invalid or past date entered");
         input.classList.remove("set");
+        task.dateInputted = false; 
+        input.value = "!invalid date"
       } else {
-        console.log("The date you inputted is good enough to be valid.");
+        console.log("Valid date entered.");
         input.classList.add("set");
+        task.dateInputted = dateInput; 
       }
+
+      saveTasks();
     });
 
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "X";
     removeBtn.classList.add("removeBtn");
-    li.appendChild(removeBtn);
-  }
+
+    resourceDiv.appendChild(removeBtn);
+
+    li.appendChild(input);
+    taskList.appendChild(resourceDiv);
+    taskList.appendChild(li);
+  });
 }
 
 function saveTasks() {
