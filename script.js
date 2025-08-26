@@ -9,9 +9,9 @@ var open = false
 
 let priority = [
   // Set acceptable flags
-  { id: 1, emoji: "⭕" },
+  { id: 1, emoji: "🟩" },
   { id: 2, emoji: "🟨" },
-  { id: 3, emoji: "🟩" },
+  { id: 3, emoji: "⭕" },
 ];
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || []; // load tasks from the local storage
@@ -103,10 +103,11 @@ function renderSettings() {
   // might use the same stylesheet from the popup modal for the settings interface.
 }
 
-function setPriority() {
-
+function setPriority(taskIndex, posY) {
   const mainFrame = document.createElement("div");
   mainFrame.classList.add("main_p")
+  const rect = mainFrame.getBoundingClientRect()
+  mainFrame.style.marginTop = posY + 50
 
   const subFrame = document.createElement("div")
   subFrame.classList.add("sub_p")
@@ -128,6 +129,13 @@ function setPriority() {
     emoji.textContent = text.emoji 
     emoji.classList.add("emoji")
 
+    emoji.addEventListener("click", () => {
+      tasks[taskIndex]._p = i
+      saveTasks()
+      renderTasks()
+      console.log("The index of this button is: " , {i})
+    })
+
     emojiFrame.appendChild(emoji)
   });
 
@@ -144,8 +152,11 @@ function setPriority() {
 function renderTasks() {
   // this function loads and sets the to-do inputs from the client using the local storage native to visual studio code.
   taskList.innerHTML = "";
+  const sortedTasks = [...tasks].sort((a, b) => {
+      return (a._p ?? Infinity) - (b._p ?? Infinity);
+    });
 
-  tasks.forEach((task, i) => {
+  sortedTasks.forEach((task, i) => {
     // tasks is an array [] it is searching this array and takes two args i = index task = nameOfTask
     const li = document.createElement("li"); // "li" is a list element
     li.dataset.index = i; // set the index from the dataset...
@@ -161,7 +172,11 @@ function renderTasks() {
     });
 
     flag.addEventListener("click", () => {
-      setPriority();
+      const rect = flag.getBoundingClientRect()
+      const x = rect.left
+      const y = rect.top
+
+      setPriority(i, y);
     });
 
     if (task.completed) li.classList.add("completed");
