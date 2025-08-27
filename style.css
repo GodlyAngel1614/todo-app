@@ -2,21 +2,36 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f5f5f5;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: row;
   min-height: 100vh;
   margin: 0;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;  /* centers the container horizontally */
+  align-items: flex-start;  /* optional: change to center for vertical alignment */
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .container {
   background: #fff;
   padding: 2rem;
-  margin-top: 2rem;
+  margin-left: 25rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
 }
+
 
 h1 {
   text-align: center;
@@ -80,6 +95,22 @@ button.emoji {
   cursor: pointer;
 }
 
+.side-menu-main-frame {
+  flex: display;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  width: 250px;
+  background-color: black;
+  color: white;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+
+.side-menu-main-frame ul, li {
+  text-align: center;
+}
+
 div.resource {
   display: flex;
   flex-direction: row;
@@ -91,11 +122,9 @@ div.resource {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 2%;
   max-width: 400px;
-  margin-left: 23.5rem;
+  margin-left: 30rem;
   align-content: center;
   margin-top: -2rem;
-
-  text-align: center;
 }
 
 /* Emoji content */
