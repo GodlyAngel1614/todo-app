@@ -106,6 +106,27 @@ ul {
   margin: 0;
 }
 
+a { 
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  word-break: break-word;
+  font-family: "Montagu Slab", serif;
+  font-size: 0.9em;
+  position: relative;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  
+  cursor: pointer;
+}
+
+a:hover {
+  text-shadow: 5px 10px 10px white;
+}
+
 li {
   display: flex;
   flex-direction: column;
