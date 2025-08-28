@@ -1,44 +1,71 @@
+/* -------------------- Base -------------------- */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f5f5f5;
-  display: flex;
-  flex-direction: row;
-  min-height: 100vh;
   margin: 0;
+  display: flex;
+  min-height: 100vh;
 }
 
+/* -------------------- Layout -------------------- */
 .layout {
   display: flex;
-  min-height: 100vh;
-  background: #f5f5f5;
+  width: 100%;
 }
 
+/* Side menu */
+.side-menu-main-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 250px;
+  background-color: #000;
+  color: #fff;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.side-menu-main-frame ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.side-menu-main-frame li {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+/* Main content */
 .main-content {
   flex: 1;
   display: flex;
-  justify-content: center;  /* centers the container horizontally */
-  align-items: flex-start;  /* optional: change to center for vertical alignment */
+  justify-content: center;
+  align-items: flex-start;
   padding: 2rem;
   box-sizing: border-box;
 }
 
+/* Container for tasks */
 .container {
   background: #fff;
   padding: 2rem;
-  margin-left: 25rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
 }
 
-
 h1 {
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
+/* -------------------- Input -------------------- */
 .input-group {
   display: flex;
+  gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
@@ -46,157 +73,126 @@ h1 {
   flex: 1;
   padding: 0.5rem;
   font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s all ease;
+  text-align: center;
+}
+
+#taskInput:focus {
+  border-color: #d6336c;
+  box-shadow: 0 0 5px rgba(214, 51, 108, 0.5);
 }
 
 #addBtn {
   padding: 0.5rem 1rem;
-  margin-left: 0.5rem;
   cursor: pointer;
+  border: none;
+  background-color: #d6336c;
+  color: #fff;
+  border-radius: 5px;
+  transition: 0.2s ease;
 }
 
+#addBtn:hover {
+  background-color: #b52a58;
+}
+
+/* -------------------- Task list -------------------- */
 ul {
-  
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 li {
-  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  align-content: left;
-  align-items: left;  
-  font-family: "Montagu Slab", serif;
-  font-size: .8em;
-
   gap: 5px;
-  padding: 2rem;
+  padding: 1rem;
   border-bottom: 1px solid #eee;
-
-  width: 100%; /* make li take full width of parent */
-  word-wrap: break-word; /* legacy, but still works */
-  overflow-wrap: anywhere; /* modern: breaks words at any point */
-  white-space: normal; /* ensure text wraps to next line */
-  text-align: left;
+  word-break: break-word;
+  font-family: "Montagu Slab", serif;
+  font-size: 0.9em;
+  position: relative;
 }
-
-button {
-  border: transparent;
-  background: transparent;
-  font-size: 1rem;
-  z-index: 100;
-  cursor:copy;
-}
-
-button.emoji {
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
-}
-
-.side-menu-main-frame {
-  flex: display;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  width: 250px;
-  background-color: black;
-  color: white;
-  padding: 50px 20px;
-  box-sizing: border-box;
-}
-
-.side-menu-main-frame ul, li {
-  text-align: center;
-}
-
-div.resource {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  background: #fff;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 2%;
-  max-width: 400px;
-  margin-left: 30rem;
-  align-content: center;
-  margin-top: -2rem;
-}
-
-/* Emoji content */
-
-div.main_p {
-  position: absolute;
-  display: inline;
-  inline-size: 5px;
-  align-content: center;
-  align-items: center;
-  width: 10%;
-  height: 15%;
-  background-color: white;
-  border-radius: 5px;
-  z-index: 999;
-  margin-left: 15rem;
-}
-
-div.sub_p {
-  width: 90%;
-  height: 90%;
-  background-color: rgb(255, 255, 255);
-  border-radius: 2px;
-  margin: 6px;
-  padding: 5px;
-  border: 5px double black;
-}
-
-div.content_p {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  margin-top: 45px;
-  width: 100%;
-  height: 60%;
-  background-color: rgb(240, 240, 240);
-  border-radius: 10px;
-  border: 2px groove rgb(175, 170, 173, 0.5);
-  box-shadow: 0 0 5px rgba(175, 170, 173, 0.5);
-}
-
-
 
 li.completed {
   text-decoration: line-through;
   color: #888;
 }
 
-button.removeBtn {
-  background: none;
+/* Buttons inside tasks */
+button {
   border: none;
-  color: red;
+  background: transparent;
   cursor: pointer;
 }
 
-input {
-  overflow-wrap: break-word;
-  width: 80%;
-  padding: 3px 5px;
-  margin: 10px 0;
-  border: 2px sollid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: "Arial", sans-serif;
-  outline: none;
-  transition: 0.2s all ease;
-  text-align: center;
+button.removeBtn {
+  color: red;
+  font-weight: bold;
 }
 
+button.emoji {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* -------------------- Emoji popup -------------------- */
+
+div.main_p {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 999;
+  padding: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+}
+
+div.sub_p {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  box-sizing: border-box; /* includes padding in width */
+}
+
+div.content_p {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  gap: 5px; /* smaller gap */
+  width: 100%;
+  box-sizing: border-box; /* ensures padding doesn’t overflow */
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  border: 2px groove rgba(175, 170, 173, 0.5);
+  padding: 5px; /* smaller padding */
+  margin-top: 0.5rem;
+  max-width: 100%; /* ensure it never exceeds sub_p */
+}
+
+
+/* -------------------- Resources box -------------------- */
+div.resource {
+  display: flex;
+  gap: 0.5rem;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  word-break: break-word;
+}
+
+/* -------------------- Misc -------------------- */
 input.set {
-  border: transparent;
+  border: none;
   box-shadow: 0 2px 10px rgba(9, 255, 50, 0.1);
 }
+
 
 input.set:focus {
   border-bottom: #d6336c;
