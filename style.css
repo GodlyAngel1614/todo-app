@@ -1,3 +1,5 @@
+
+
 /* -------------------- Base -------------------- */
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -119,14 +121,21 @@ a {
   text-align: center;
   color: white;
   text-decoration: none;
-  
+  transition: text-shadow 0.5s ease;
+
   cursor: pointer;
 }
 
-a:hover {
-  text-shadow: 5px 10px 10px white;
+@keyframes hover {
+  from {text-shadow: none;}
+  to {text-shadow: 5px 10px 10px white;}
 }
 
+a:hover {
+  animation-name: hover;
+  animation-duration: 0.5s; 
+  animation-fill-mode: forwards; 
+}
 li {
   display: flex;
   flex-direction: column;
