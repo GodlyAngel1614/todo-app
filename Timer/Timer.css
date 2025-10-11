@@ -1,0 +1,65 @@
+
+/* -------------------- Base -------------------- */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #7bb4ff;
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* -------------------- Layout -------------------- */
+.layout {
+  display: flex;
+  width: 100%;
+}
+
+/* Side menu */
+.side-menu-main-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 250px;
+  background-color: #000;
+  color: #fff;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.side-menu-main-frame ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.side-menu-main-frame li {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+/* Main */
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a { 
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  word-break: break-word;
+  font-family: "Montagu Slab", serif;
+  font-size: 0.9em;
+  position: relative;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  transition: text-shadow 0.5s ease;
+
+  cursor: pointer;
+}
