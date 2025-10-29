@@ -22,9 +22,21 @@ renderTasks();
 let settings = JSON.parse(localStorage.getItem("settings")) || [];
 
 // add tasks
-addBtn.addEventListener("click", () => {
-  const taskText = taskInput.value.trim();
-  if (taskText) {
+addBtn.addEventListener("click",  addTask)
+
+
+taskInput.addEventListener("keydown", (e) => {
+  if (e.key == "Enter") {
+    const taskText = taskInput.value.trim()
+    if (taskText.length > 1) {
+      addTask()
+    }
+  }
+})
+
+function addTask() {
+const taskText = taskInput.value.trim();
+  if (taskText.length > 1) {
     tasks.push({
       text: taskText,
       completed: false,
@@ -33,12 +45,12 @@ addBtn.addEventListener("click", () => {
     });
     saveTasks();
     renderTasks();
-    //popup();
     taskInput.value = "";
   }
+  console.log("Task added:", taskInput.value);
+}
 
-  console.log("the add btn was clicked.");
-});
+
 
 // Toggle complete and remove task
 taskList.addEventListener("click", (e) => {
